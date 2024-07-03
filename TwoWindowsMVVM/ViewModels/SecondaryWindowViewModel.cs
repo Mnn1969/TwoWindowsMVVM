@@ -13,23 +13,23 @@ namespace TwoWindowsMVVM.ViewModels
             Title = "Вторичное окно";
         }
 
-        #region Messge : string? - Текст сообщения
+        #region Message : string? - Текст сообщения
 
         /// <summary>Текст сообщения</summary>
-        private string? _Messge;
+        private string? _Message;
 
         /// <summary>Текст сообщения</summary>
-        public string? Messge
+        public string? Message
         {
-            get => _Messge;
-            set => Set(ref _Messge, value);
+            get => _Message;
+            set => Set(ref _Message, value);
         }
 
         #endregion
 
         private readonly ObservableCollection<TextMessageModel> _Messages = new();
 
-        public IEnumerable<TextMessageModel> Message => _Messages;
+        public IEnumerable<TextMessageModel> Messages => _Messages;
 
         #region Command SendMessageCommand - Отправка сообщения
 
