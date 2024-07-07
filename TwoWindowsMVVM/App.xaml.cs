@@ -44,7 +44,7 @@ namespace TwoWindowsMVVM
         {
             base.OnStartup(e);
 
-            Services.GetRequiredService<MainWindow>().Show();
+            Services.GetRequiredService<IUserDialog>().OpenMaimWindow();
         }
     }
 
