@@ -70,7 +70,7 @@ namespace TwoWindowsMVVM.ViewModels
         /// <summary>Логика выполнения - Открыть второе окно</summary>
         private void OnOpenSecondWindowCommandExecuted()
         {
-            
+            _UserDialog!.OpenSecondaryWindow();
         }
 
         #endregion
@@ -87,7 +87,7 @@ namespace TwoWindowsMVVM.ViewModels
         /// <summary>Логика выполнения - Перейти во второе окно</summary>
         private void OnChangeToSecondWindowCommandExecuted()
         {
-            
+            _UserDialog!.OpenSecondaryWindow();
         }
 
         #endregion
