@@ -9,8 +9,9 @@ namespace TwoWindowsMVVM.ViewModels
 {
     public class MainWindowViewModel : DialogViewModel
     {
-        private readonly IUserDialog? _UserDialog;
-        private readonly IMessageBus? _MessageBus;
+        private readonly IUserDialog? _UserDialog = null!;
+        private readonly IMessageBus? _MessageBus = null!;
+        private readonly IDisposable _Subscription = null!;
 
         public MainWindowViewModel()
         {
@@ -21,7 +22,12 @@ namespace TwoWindowsMVVM.ViewModels
         {
             _UserDialog = UserDialog;
             _MessageBus = MessageBus;
+
+            _Subscription = MessageBus!.RegisterHandler<Message>(OnReceiveMessage);
         }
+
+        public void Dispose() => _Subscription.Dispose();
+        private void OnReceiveMessage(Message message) => _Messages.Add(new(message.Text));
 
         #region Message : string? - Текст сообщения
 
@@ -54,7 +60,7 @@ namespace TwoWindowsMVVM.ViewModels
         /// <summary>Логика выполнения - Отправка сообщения</summary>
         private void OnSendMessageCommandExecuted(object? p)
         {
-            
+            _MessageBus!.Send(new Message((string)p!));
         }
 
         #endregion
